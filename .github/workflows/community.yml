@@ -28,6 +28,10 @@ jobs:
 
       - name: Running testing pipeline via tekton
         id: test-tekton
+        env:
+          PATH: "$HOME/.op/bin:$PATH"
         run: |
+          PATH="$HOME/.op/bin:$PATH"
+          echo $PATH
           tkn pipeline start index-audit --use-param-defaults --workspace name=pipeline,volumeClaimTemplateFile=templates/workspace-template.yml --showlog
           RC=$(tkn pipelinerun describe --last -o yaml | yq r - status.conditions[0].status)
