@@ -10,7 +10,7 @@ on:  # yamllint disable-line rule:truthy
 
 jobs:
   community-base-pipeline-test:
-    name: Install kind cluster
+    name: Community base pipeline test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
